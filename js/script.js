@@ -104,25 +104,25 @@ $("#calcularTempo").click(function(){
   //console.log(deltaTempo(0, 0, 2, -2, 0)[0]);
   //console.log(range(0, 9, 1));
 
-  $("#resultado").text("Resultado: " + resultado + "s");
+  $("#resultado").text("Resultado: " + math.round(resultado*10000)/10000 + "s");
 
   var Xmax = math.max(Xs);
-  var Xmin = math.min(Xs);
-  var Ymax = math.max(Ys);
+  //var Xmin = math.min(Xs);
+  //var Ymax = math.max(Ys);
   var Ymin = math.min(Ys);
 
   var M = Xmax;
-  var m = Xmin;
+  //var m = Ymin;
 
-  if (Xmax < Ymax) {
-    M = Ymax;
+  if (Xmax < -Ymin) {
+    M = -Ymin;
   };
-
+/*
   if (Xmin > Ymin) {
     m = Ymin;
   };
-
-  console.log(M, m);
+*/
+  //console.log(M, m);
 
   for (i = 0; i <= Xs.length; i++) {
     chartPontos.push({"X": Xs[i], "Y": Ys[i]})
@@ -130,12 +130,11 @@ $("#calcularTempo").click(function(){
 
   AmCharts.makeChart( "chartdiv", {
   "type": "xy",
-  "startDuration": 1.5,
   "trendLines": [],
   "graphs": [
     {
       "id": "AmGraph-1",
-
+      "lineThickness": 4,
       "xField": "X",
       "yField": "Y"
     }
@@ -145,7 +144,7 @@ $("#calcularTempo").click(function(){
     {
       "id": "ValueAxis-1",
       "maximum": 0,
-      "minimum": m,
+      "minimum": -M,
       "axisAlpha": 0
     },
     {
@@ -162,6 +161,9 @@ $("#calcularTempo").click(function(){
   "dataProvider": chartPontos
 })
 
+var ht = $('#chartdiv').width();
+$('#chartdiv').css({'height':ht+'px'});
+
 });
 
 $("#reta").click(function(){
@@ -171,11 +173,11 @@ $("#reta").click(function(){
   $("#t1").val("pi");
 });
 
-$("#circulo").click(function(){
-  $("#xt").val("cos(t)");
-  $("#yt").val("sin(t)");
-  $("#t0").val("pi");
-  $("#t1").val("3*pi/2");
+$("#polinomio").click(function(){
+  $("#xt").val("t");
+  $("#yt").val("-4.59t + 3.35t^2 - 0.67t^3");
+  $("#t0").val("0");
+  $("#t1").val("pi");
 });
 
 $("#cicloide").click(function(){

@@ -13,59 +13,101 @@
 
   <body class="container">
   	<div class="page-header">
-    	<h1>Simulação Computacional</h1>
+    	<h1>Simulação Computacional </h1>
     </div>
-    <p>
-    	Preencha os espaços:
-    </p>
+    
     <div class="row">
-	    <div class="col-lg-6">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">x(t) =</span>
-				<input id="xt" type="text" class="form-control" placeholder="Exp.: t - sin(t)">
+
+    	<div class="col-lg-6 col-md-6 container">
+	    	<p>
+		    	Preencha os espaços com as funções da curva parametrizada e os valores inicial e final do parâmetro t:
+		    </p>
+    		<div class="col-md-10 col-md-offset-1" style="margin-top: 20px;">
+			    <div class="row">
+				    <div class="col-lg-12">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">x(t) =</span>
+							<input id="xt" type="text" class="form-control" placeholder="Exp.: t - sin(t)">
+						</div>
+					</div>
+				</div>
+			    <div class="row">
+				    <div class="col-lg-12">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">y(t) =</span>
+							<input id="yt" type="text" class="form-control" placeholder="Exp.: -1 + cos(t)">
+						</div>
+					</div>
+				</div>
+			    <div class="row">
+				    <div class="col-lg-12">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">t0 =</span>
+							<input id="t0" type="text" class="form-control" placeholder="Exp.: 0">
+						</div>
+					</div>
+				</div>
+			    <div class="row">
+				    <div class="col-lg-12">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">t1 =</span>
+							<input id="t1" type="text" class="form-control" placeholder="Exp.: pi">
+						</div>
+					</div>
+					
+				</div>
+				<h4 style="margin-top: 20px;">Curvas de Exemplo:</h4>
+				<div class="row" style="margin-top: 10px;">
+					<div class="col-lg-12">
+						<button id="reta" class="btn btn-default" type="button">Reta</button>
+						<button id="polinomio" class="btn btn-default" type="button">Polinômio</button>
+						<button id="cicloide" class="btn btn-default" type="button">Cicloide</button>
+					</div>
+				</div>
+				<button id="calcularTempo" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;" type="button">SIMULAR</button>
+
+
+				<h2 id="resultado" class="text-center"></h2>
+
+				<div id="chartdiv" style="width:100%;"></div>
 			</div>
 		</div>
-	</div>
-    <div class="row">
-	    <div class="col-lg-6">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">y(t) =</span>
-				<input id="yt" type="text" class="form-control" placeholder="Exp.: -1 + cos(t)">
-			</div>
+
+
+
+		<div class="col-lg-6 col-md-6">
+
+			<h3>Sobre o Simulador</h3>
+
+			<p class="text-justify">
+				Essa simulação computacional tem como objetivo auxiliar no estudo da curva cicloide e suas propriedades físicas utilizando curvas parametrizadas.
+			</p>
+
+			<p class="text-justify">
+				O simulador calcula o tempo que leva para uma particula percorrer uma "rampa", determinada por uma curva parametrizada, submetendo-a somente à força da gravidade.
+			</p>
+			<br>
+			<h4>
+				Como Utilizar o Simulador:
+			</h4>
+			<p class="text-justify">
+				Para utilizar o simulador é preciso preencher os espaços "x(t)" e "y(t)" com as funções "x" e "y" da curva com o parâmetro t (NOTE: é obrigatório que o parâmetro seja nomeado <strong>t</strong>!) e preencher os espaços "t0" e "t1" com os valores inicial e final do parâmetro t. Depois de preencher os espaços, aperte o botão "SIMULAR" para fazer a simulação e o resultado aparecerá abaixo.
+			</p>
+			<p>
+				As Curvas de Exemplo são curvas parametrizadas 
+			</p>
+			<br>
+			<h4>
+				Restrições do Simulador:
+			</h4>
+			<p class="text-justify">
+				- O gráfico sempre terá o valor (0,0) em seu canto superior esquerdo, independente da curva parametrizada. (Ou seja, se sua curva não aparecer no gráfico, ela provavelmente tem seus valores de "x" < 0 e de "y" > 0)<br><br>
+				- A curva parametrizada não pode retroceder no eixo x, porque não seria fisicamente coerente para a partícula acompanhar a curva.<br><br>
+				- A curva parametrizada não pode ter nenhum de seus valores de "y" maiores que seu "y" inicial, porque também não seria fisicamente coerente para a partícula acompanhar a curva. <br><br>
+				- O simulador aceita algumas constantes como euler e pi, escritas "e" e "pi", e funções trigonométricas como seno e arcotangente, escritas "sin()" e "atan()". Para mais informações, visite o site <a href="http://mathjs.org/">http://mathjs.org/</a>.
+			</p>
 		</div>
 	</div>
-    <div class="row">
-	    <div class="col-lg-6">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">t0 =</span>
-				<input id="t0" type="text" class="form-control" placeholder="Exp.: 0">
-			</div>
-		</div>
-	</div>
-    <div class="row">
-	    <div class="col-lg-6">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">t1 =</span>
-				<input id="t1" type="text" class="form-control" placeholder="Exp.: pi">
-			</div>
-		</div>
-		
-	</div>
-	<button id="calcularTempo" class="btn btn-default" type="button">Go!</button>
-	<div class="row">
-		<div class="col-lg-6">
-			<button id="reta" class="btn btn-default" type="button">Reta</button>
-			<button id="circulo" class="btn btn-default" type="button">Círculo</button>
-			<button id="cicloide" class="btn btn-default" type="button">Cicloide</button>
-		</div>
-	</div>
-	<p id="resultado"></p>
-
-
-
-	<div id="chartdiv" style="width:800px; height:600px;"></div>
-
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
